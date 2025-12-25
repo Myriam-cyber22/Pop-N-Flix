@@ -53,26 +53,3 @@ document.addEventListener('DOMContentLoaded', () => {
             authManager.seConnecter();
         });
     }
-
-});
-// AJOUTER ÇA À LA FIN de index.js
-import { AuthManager } from './auth.js';
-
-// Gestion des boutons connexion/déconnexion
-document.addEventListener('DOMContentLoaded', () => {
-    const authManager = new AuthManager();
-    const btnConnexion = document.getElementById('btn-connexion');
-    
-    // Si connecté, changer le texte du bouton
-    if (authManager.estConnecte()) {
-        btnConnexion.textContent = 'Se déconnecter';
-        btnConnexion.onclick = () => {
-            authManager.seDeconnecter();
-            alert('Déconnecté !');
-            location.reload();
-        };
-    } else {
-        btnConnexion.textContent = 'Se connecter';
-        btnConnexion.onclick = () => authManager.seConnecter();
-    }
-});

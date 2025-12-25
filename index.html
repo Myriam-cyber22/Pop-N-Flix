@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop'N'Flix - Accueil</title>
+    <link rel="stylesheet" href="index.css"> </head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3418/3418886.png" class="popcorn-icon">
+            <h1 class="main-title">Pop'N'Flix</h1>
+            <div class="red-divider"></div>
+        </div>
+        <nav class="centered-nav">
+    <a href="index.html">Accueil</a>
+    <a href="recherche.html">Recherche</a>
+    <!-- BOUTON TEST - ajoute ça -->
+    <button id="btn-connexion">Se connecter</button>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">Films en tendance aujourd'hui</h2>
+
+        <div class="grid-separator"></div>
+        
+        <div id="movie-container" class="movie-grid">
+            </div>
+        
+        <button id="load-more">Charger plus de films</button>
+    </main>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+/* Couleurs et Base */
+:root {
+    --netflix-red: #e50914;
+    --netflix-black: #141414;
+    --netflix-yellow: #f5c518; /* Jaune Pop'N'Flix */
+}
+
+body {
+    background-color: var(--netflix-black);
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barre de décoration tout en haut (Rouge) */
+body::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background-color: var(--netflix-red);
+    width: 100%;
+}
+
+
+.movie-title-header {
+    text-align: center;
+    font-size: 4rem; /* Très gros titre en haut */
+    color: var(--netflix-red);
+    margin: 40px 0 10px 0;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* Titre de section centré et grand */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem; /* Taille imposante */
+    color: white;
+    margin: 40px 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Le trait rouge avant la grille de films */
+.grid-separator {
+    width: 60%; /* Largeur du trait */
+    height: 3px;
+    background-color: var(--netflix-red);
+    margin: 0 auto 40px auto; /* Centré avec de l'espace en bas */
+    border-radius: 2px;
+}
+
+/* Header centré */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    background-color: var(--netflix-black);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popcorn-icon {
+    width: 60px; /* Taille du petit pop-corn */
+    margin-bottom: 10px;
+}
+
+.main-title {
+    color: var(--netflix-yellow);
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: none;
+    margin: 0;
+}
+
+/* Le trait rouge sous le titre */
+.red-divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--netflix-red);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.centered-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.centered-nav a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.centered-nav a:hover {
+    color: white;
+}
+
+/* 1. Plus d'espace entre les films */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 60px; /* Espace important entre les cartes */
+    padding: 50px;
+}
+
+/* 2. Configuration de la carte pour le zoom global */
+.movie-card {
+    position: relative;
+    background: transparent;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Animation fluide */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+/* On retire le zoom spécifique à l'image seule s'il y en avait un */
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+    transition: none; 
+}
+
+/* 3. L'effet de zoom sur TOUTE la carte au survol */
+.movie-card:hover {
+    transform: scale(1.15); /* Zoom de 15% sur tout le bloc */
+    z-index: 10; /* Pour passer par-dessus les voisins */
+}
+
+/* Optionnel : Ajuster les numéros pour qu'ils suivent le mouvement */
+.rank-number {
+    position: absolute;
+    left: -35px;
+    bottom: 10px;
+    font-size: 8rem;
+    font-weight: 900;
+    -webkit-text-stroke: 2px #555;
+    color: rgba(20, 20, 20, 0.8);
+    z-index: -1; /* Derrière l'image pour un look pro */
+    pointer-events: none;
+}
+
+/* Container principal des détails */
+#movie-details {
+    padding: 60px 5%;
+    background: linear-gradient(to bottom, #141414, #000);
+    min-height: 80vh;
+}
+
+.movie-hero {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.details-poster {
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    transition: transform 0.3s;
+}
+
+.details-text {
+    flex: 1;
+    color: white;
+}
+
+.details-text h1 {
+    font-size: 3.5rem;
+    color: var(--netflix-red); /* Utilise ton rouge */
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-style: italic;
+    color: var(--netflix-yellow);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.overview {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 800px;
+}
+
+/* Commentaire des films*/
+/* Container global des commentaires */
+.comments-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.comments-section h3 {
+    color: var(--netflix-yellow);
+    border-bottom: 2px solid var(--netflix-red);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+/* La Boîte de commentaire */
+.review-card {
+    background-color: #1f1f1f; /* Gris très foncé */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333; /* Bordure discrète */
+    transition: transform 0.2s;
+}
+
+.review-card:hover {
+    border-color: var(--netflix-red); /* La boîte s'illumine au survol */
+}
+
+/* Header du commentaire (Avatar + Nom) */
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+/* Image de profil plus petite et ronde */
+.reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+}
+
+.reviewer-info strong {
+    color: white;
+    font-size: 1rem;
+    display: block;
+}
+
+.review-date {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+/* Texte du commentaire */
+.review-content {
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* On s'assure que le lien qui entoure la carte ne change pas le style du texte */
+.movie-card-link {
+    text-decoration: none; 
+    color: inherit;
+    display: block;
+    outline: none;
+}
+
+/* On stylise les titres et dates sous les films pour qu'ils soient propres */
+.movie-info-bottom {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.movie-info-bottom h3 {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+    color: white;
+    font-weight: bold;
+}
+
+.movie-info-bottom p {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Masquer l'ancien lien "en savoir plus" s'il existe encore dans le HTML */
+.movie-card-link a[href*="movie.html"], 
+.btn-details {
+    display: none !important;
+}
+
+/* Ajustement pour que le numéro reste bien positionné lors du zoom global */
+.movie-card:hover .rank-number {
+    -webkit-text-stroke: 2px var(--netflix-red); /* Optionnel : le chiffre devient rouge au survol */
+    transition: 0.3s;
+}
+
+#load-more {
+    display: block;
+    margin: 50px auto; /* Centrage automatique */
+    background-color: var(--netflix-red);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px; /* Coins légèrement arrondis */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#load-more:hover {
+    background-color: #b20710; /* Rouge plus foncé au survol */
+    transform: scale(1.05);
+}
+
+/* Style pour le bouton Se connecter */
+#btn-connexion {
+    background: none;
+    border: none;
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: inherit; /* Même police que le reste */
+}
+
+#btn-connexion:hover {
+    color: white;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Pop'N'Flix</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3418/3418886.png" class="popcorn-icon">
+            <h1 class="main-title">Pop'N'Flix</h1>
+            <div class="red-divider"></div>
+        </div>
+    </header>
+
+    <main style="text-align: center; padding: 50px;">
+        <h2 id="status">🔐 Finalisation de la connexion...</h2>
+        <p id="message">Veuillez patienter...</p>
+    </main>
+
+    <script type="module">
+        import { AuthManager } from './auth.js';
+        
+        const statusEl = document.getElementById('status');
+        const messageEl = document.getElementById('message');
+        
+        async function finaliserConnexion() {
+            try {
+                const auth = new AuthManager();
+                await auth.creerSession();
+                
+                // Succès !
+                statusEl.textContent = '✅ Connexion réussie !';
+                messageEl.textContent = 'Redirection vers l\'accueil...';
+                
+                // Retour à l'accueil après 2 secondes
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                
+            } catch (error) {
+                // Erreur
+                statusEl.textContent = '❌ Erreur de connexion';
+                messageEl.textContent = 'Retour à l\'accueil...';
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+            }
+        }
+        
+        // Démarrer dès que la page se charge
+        finaliserConnexion();
+    </script>
+</body>
+</html>

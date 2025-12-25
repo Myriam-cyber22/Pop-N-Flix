@@ -21,8 +21,12 @@ export class AuthManager {
     async seConnecter() {
         const token = await this.demanderToken();
         
-        // Rediriger vers TMDB
-        const lienTMDB = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${window.location.origin}/callback.html`;
+        // URL de redirection corrigée pour GitHub Pages
+        const baseUrl = window.location.hostname === 'localhost' 
+            ? window.location.origin 
+            : 'https://myriam-cyber22.github.io/Pop-N-Flix';
+        
+        const lienTMDB = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${baseUrl}/callback.html`;
         window.location.href = lienTMDB;
     }
 
@@ -46,5 +50,12 @@ export class AuthManager {
     // Vérifier si connecté
     estConnecte() {
         return this.sessionId !== null;
+    }
+
+    // Déconnexion
+    seDeconnecter() {
+        localStorage.removeItem('session_tmdb');
+        localStorage.removeItem('token_temp');
+        this.sessionId = null;
     }
 }
